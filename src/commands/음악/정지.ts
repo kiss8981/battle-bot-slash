@@ -34,12 +34,7 @@ export default new BaseCommand(
           ],
         });
 
-      if (interaction.member.voice.channel?.id !== interaction.guild.members.me?.voice.channel?.id) return interaction.reply({
-        embeds: [
-          new Embed(client, 'default')
-            .setDescription(`명령어를 사용하시려면 ${client.user} 봇이랑 같은 음성채널에 참여해야됩니다!`)
-        ]
-      })
+
       if (queue) queue.destroy();
       client.lavalink.deletePlayer(interaction?.guild?.id)
       liveStatusDelete(interaction.guild.id, client)
